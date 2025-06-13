@@ -1,5 +1,6 @@
 # Prerequisites
 *.d
+external/
 
 # Compiled Object files
 *.slo
