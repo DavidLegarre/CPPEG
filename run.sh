@@ -9,6 +9,7 @@ if [ -f build/GameEngine ]; then
     ./build/GameEngine
 else
     echo "Build failed or GameEngine executable not found."
+    rm -rf build CMakeFiles CMakeCache.txt cmake_install.cmake Makefile
     exit 1
 fi
 
