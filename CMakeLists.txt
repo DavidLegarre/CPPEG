@@ -12,8 +12,9 @@ find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 
 # Add GLAD
-add_subdirectory(external/glad)
 include_directories(external/glad/include)
+add_library(glad STATIC external/glad/src/glad.c)
+target_include_directories(glad PUBLIC external/glad/include)
 
 # Add GLFW (used to initialize OpenGL context)
 add_subdirectory(external/glfw)
@@ -30,5 +31,4 @@ target_link_libraries(GameEngine
     glfw
     dl
 )
-
 target_include_directories(GameEngine PRIVATE include)
