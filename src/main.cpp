@@ -44,7 +44,9 @@ void renderFrame()
 {
     glClear(GL_COLOR_BUFFER_BIT);
     // draw ball here
-    SDL_GL_SwapWindow(SDL_GL_GetCurrentWindow()); // quick hack for now
+    for (auto& ball : balls)
+        drawCircle(ball->position, ball->radius);
+    SDL_GL_SwapWindow(SDL_GL_GetCurrentWindow()); 
 }
 
 int main()
