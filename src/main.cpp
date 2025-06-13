@@ -2,8 +2,13 @@
 #include "math/Vec2.h"
 #include <glad/glad.h>
 #include <chrono>
+#include <vector>
+#include <memory>
+#include "objects/Ball.h"
+#include "objects/BallFactory.h"
 
 bool running = true;
+std::vector<std::unique_ptr<Ball>> balls;
 
 void healthcheck()
 {
@@ -29,6 +34,10 @@ void processInput()
 void update(float dt)
 {
     // update physics or ball position here
+    for (auto &ball : balls)
+    {
+        ball->update(dt);
+    }
 }
 
 void renderFrame()
@@ -46,6 +55,7 @@ int main()
     auto prev = clock::now();
     const float dt = 1.0f / 60.0f;
     float accumulator = 0.0f;
+    balls.push_back(BallFactory::createBall({400, 300}, {200, 150}, 20.0f));
 
     while (running)
     {

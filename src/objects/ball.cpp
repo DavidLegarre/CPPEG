@@ -1,4 +1,4 @@
-#include "objects/ball.h"
+#include "objects/Ball.h"
 
 void Ball::update(float dt)
 {
